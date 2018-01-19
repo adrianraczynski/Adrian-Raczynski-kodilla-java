@@ -4,13 +4,13 @@ import java.util.List;
 
 public class CalculateForumStatistics implements Statistics {
 
-    private Statistics statistics;
     private int numberOfPosts;
     private int numberOfComments;
     private ArrayList <String> list;
     private double avgPostPerUser;
     private double avgCommentPerUser;
     private double avgCommentPerPost;
+    private Statistics statistics;
 
     public CalculateForumStatistics(Statistics statistics) {
         this.statistics = statistics;
@@ -33,6 +33,7 @@ public class CalculateForumStatistics implements Statistics {
         double avgPostPerUser = numberOfPosts/list.size();
         double avgCommentPerUser = numberOfComments/list.size();
         double avgCommentPerPost = numberOfComments/numberOfPosts;
+
     }
 
     public void ShowStatistics() {
