@@ -28,7 +28,17 @@ public class CalculateForumStatistics {
         return numberOfPosts;
     }
 
+    public double getNumberOfAvgPostPerUser (int numberOfPosts, int numberOfUsers) {
+        return avgPostPerUser;
+    }
 
+    public double getNumberOfAvgCommentPerUser (int numberOfComments, int numberOfUsers) {
+        return avgCommentPerUser;
+    }
+
+    public double getNumberOfAvgCommentPerPost (int numberOfComments, int numberOfPosts) {
+        return avgCommentPerPost;
+    }
 
     public void calculateAdvStatistics (Statistics statistics) {
 

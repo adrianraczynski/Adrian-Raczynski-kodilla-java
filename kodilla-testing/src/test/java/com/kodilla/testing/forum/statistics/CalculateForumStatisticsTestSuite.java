@@ -40,7 +40,6 @@ public class CalculateForumStatisticsTestSuite {
     @Test
     public void testCalculateAdvStatisticsNumberOfPosts0 () {    // gdy liczba postów = 0
         //Given
-
         when(statisticsMock.postsCount()).thenReturn(0);
 
         //When
@@ -52,8 +51,9 @@ public class CalculateForumStatisticsTestSuite {
         Assert.assertEquals (0, posts0 );
         Assert.assertEquals (0, calculate.getNumberOfComments(0));
         Assert.assertEquals (0, calculate.getNumberOfUsers(0));
-
-
+        Assert.assertEquals (0, calculate.getNumberOfAvgPostPerUser(0, 0));
+        Assert.assertEquals (0, calculate.getNumberOfAvgCommentPerUser (0,0));
+        Assert.assertEquals (0, calculate.getNumberOfAvgCommentPerPost(0,0));
     }
 
     @Test
@@ -69,6 +69,9 @@ public class CalculateForumStatisticsTestSuite {
         Assert.assertEquals (1000, posts1000  );
         Assert.assertEquals (0, calculate.getNumberOfComments(0));
         Assert.assertEquals (0, calculate.getNumberOfUsers(0));
+        Assert.assertEquals (0, calculate.getNumberOfAvgPostPerUser(0, 0));
+        Assert.assertEquals (0, calculate.getNumberOfAvgCommentPerUser (0,0));
+        Assert.assertEquals (0, calculate.getNumberOfAvgCommentPerPost(0,0));
     }
 
      @Test
@@ -84,6 +87,9 @@ public class CalculateForumStatisticsTestSuite {
          Assert.assertEquals (0, comments0 );
          Assert.assertEquals (0, calculate.getNumberOfPosts(0));
          Assert.assertEquals (0, calculate.getNumberOfUsers(0));
+         Assert.assertEquals (0, calculate.getNumberOfAvgPostPerUser(0, 0));
+         Assert.assertEquals (0, calculate.getNumberOfAvgCommentPerUser (0,0));
+         Assert.assertEquals (0, calculate.getNumberOfAvgCommentPerPost(0,0));
     }
 
     @Test
@@ -101,6 +107,9 @@ public class CalculateForumStatisticsTestSuite {
         Assert.assertEquals (0, users0 );
         Assert.assertEquals (0, calculate.getNumberOfComments(0));
         Assert.assertEquals (0, calculate.getNumberOfPosts(0));
+        Assert.assertEquals (0, calculate.getNumberOfAvgPostPerUser(0, 0));
+        Assert.assertEquals (0, calculate.getNumberOfAvgCommentPerUser (0,0));
+        Assert.assertEquals (0, calculate.getNumberOfAvgCommentPerPost(0,0));
     }
 
     @Test
@@ -120,6 +129,9 @@ public class CalculateForumStatisticsTestSuite {
         Assert.assertEquals (100, users100 );
         Assert.assertEquals (0, calculate.getNumberOfComments(0));
         Assert.assertEquals (0, calculate.getNumberOfPosts(0));
+        Assert.assertEquals (0, calculate.getNumberOfAvgPostPerUser(0, 0));
+        Assert.assertEquals (0, calculate.getNumberOfAvgCommentPerUser (0,0));
+        Assert.assertEquals (0, calculate.getNumberOfAvgCommentPerPost(0,0));
     }
 
     /**
@@ -128,7 +140,8 @@ public class CalculateForumStatisticsTestSuite {
      //Given
      List<String> usersNamesList = new ArrayList<String>();
 
-     when(statisticsMock.usersNames()).thenReturn(usersNamesList);
+     when(statisticsMock.postsCount()).thenReturn(200);
+     when(statisticsMock.commentsCount()).thenReturn(25);
 
      //When
         calculate.calculateAdvStatistics(statisticsMock);
@@ -144,7 +157,8 @@ public class CalculateForumStatisticsTestSuite {
      //Given
      List<String> usersNamesList = new ArrayList<String>();
 
-     when(statisticsMock.usersNames()).thenReturn(usersNamesList);
+     when(statisticsMock.postsCount()).thenReturn(25);
+     when(statisticsMock.commentsCount()).thenReturn(200);
 
      //When
      int quantityOfUsers= calculateForumStatistics.calculateAdvStatistics().size();
