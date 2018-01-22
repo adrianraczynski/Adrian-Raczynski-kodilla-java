@@ -1,12 +1,12 @@
 package com.kodilla.testing.forum.statistics;
-import java.util.ArrayList;
+
 import java.util.List;
 
-public class CalculateForumStatistics implements Statistics {
+public class CalculateForumStatistics {
 
     private int numberOfPosts;
     private int numberOfComments;
-    private ArrayList <String> list;
+    private int numberOfUsers;
     private double avgPostPerUser;
     private double avgCommentPerUser;
     private double avgCommentPerPost;
@@ -16,29 +16,49 @@ public class CalculateForumStatistics implements Statistics {
         this.statistics = statistics;
     }
 
-    public List<String> usersNames() { // list of users names
-        return list;
+    public int getNumberOfUsers (int numberOfUsers) {
+        return numberOfUsers;
     }
 
-    public int postsCount() {         // total quantity of forum posts
-        return numberOfPosts;
-    }
-
-    public int commentsCount() {      // total quantity of forum comments
+    public int getNumberOfComments (int numberOfComments) {
         return numberOfComments;
     }
 
-    public void calculateAdvStatistics(Statistics statistics) {
-
-        double avgPostPerUser = numberOfPosts/list.size();
-        double avgCommentPerUser = numberOfComments/list.size();
-        double avgCommentPerPost = numberOfComments/numberOfPosts;
-
+    public int getNumberOfPosts (int numberOfPosts) {
+        return numberOfPosts;
     }
 
-    public void ShowStatistics() {
 
-        System.out.println("Statistics: " + avgPostPerUser + avgCommentPerUser + avgCommentPerPost );
+
+    public void calculateAdvStatistics (Statistics statistics) {
+
+        numberOfUsers = statistics.usersNames().size();
+        numberOfPosts = statistics.postsCount();
+        numberOfComments = statistics.commentsCount();
+
+        if (statistics.usersNames().size() !=0 && statistics.postsCount() != 0) {
+
+            avgPostPerUser = (statistics.postsCount())/(statistics.usersNames().size());
+
+        } else {
+            avgPostPerUser = 0;
+        }
+
+        if(statistics.usersNames().size() !=0 && statistics.commentsCount() != 0) {
+
+            avgCommentPerUser = (statistics.commentsCount())/(statistics.usersNames().size());
+
+        } else {
+            avgCommentPerUser = 0;
+        }
+
+        if (statistics.commentsCount() !=0 && statistics.postsCount() != 0) {
+
+            avgCommentPerPost = (statistics.commentsCount())/(statistics.postsCount());
+
+        } else {
+            avgCommentPerPost = 0;
+        }
     }
 }
 
