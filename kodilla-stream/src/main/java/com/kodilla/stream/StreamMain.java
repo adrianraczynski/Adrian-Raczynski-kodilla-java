@@ -28,17 +28,16 @@ public class StreamMain {
 
         PoemBeautifier poemBeautifier = new PoemBeautifier ();
 
-        String qwerty0 = poemBeautifier.beautify (" Tekst do ozdobienia ",s -> s + "ABC");
+        String qwerty0 = poemBeautifier.beautify (" Tekst do ozdobienia ",s ->"\n" + s + "ABC");
         System.out.println (qwerty0);
 
-        /**String qwerty1 = poemBeautifier.beautify (" Ala ma kota ",()-> System.out.println("++!!!++"));
+        String qwerty1 = poemBeautifier.beautify (" Ala ma kota ",s ->"++!!!++" + s + "++!!!++");
         System.out.println (qwerty1);
 
-        String qwerty2 = poemBeautifier.beautify (" Kot ma Ale ",()-> System.out.println("ABC"));
+        String qwerty2 = poemBeautifier.beautify (" Kot ma Ale ", a -> "!!!!!!!!!!!" + a);
         System.out.println (qwerty0 + qwerty2.toUpperCase());
 
-        String qwerty3 = poemBeautifier.beautify (" RAZ, DWA, TRZY próba mikrofonu ",()-> System.out.println("UWAGA"));
-        System.out.println (qwerty3.toLowerCase() + "Próba wykonana prawidłowo");
-    }**/
-}
+        String qwerty3 = poemBeautifier.beautify (" RAZ, DWA, TRZY - próba mikrofonu. ", c-> c + "UWAGA " + "UWAGA " + "UWAGA " + "!!!");
+        System.out.println (qwerty3.toLowerCase() + " Próba wykonana prawidłowo.");
+    }
 }
