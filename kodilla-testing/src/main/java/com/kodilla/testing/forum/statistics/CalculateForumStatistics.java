@@ -10,21 +10,17 @@ public class CalculateForumStatistics {
     private double avgPostPerUser;
     private double avgCommentPerUser;
     private double avgCommentPerPost;
-    private Statistics statistics;
 
-    public CalculateForumStatistics(Statistics statistics) {
-        this.statistics = statistics;
-    }
 
-    public int getNumberOfUsers (int numberOfUsers) {
+    public int getNumberOfUsers () {
         return numberOfUsers;
     }
 
-    public int getNumberOfComments (int numberOfComments) {
+    public int getNumberOfComments () {
         return numberOfComments;
     }
 
-    public int getNumberOfPosts (int numberOfPosts) {
+    public int getNumberOfPosts () {
         return numberOfPosts;
     }
 
@@ -37,7 +33,8 @@ public class CalculateForumStatistics {
     }
 
     public double getNumberOfAvgCommentPerPost (int numberOfComments, int numberOfPosts) {
-        return avgCommentPerPost;
+        double getAvgCommentPerPost = avgCommentPerPost;
+        return getAvgCommentPerPost;
     }
 
     public void calculateAdvStatistics (Statistics statistics) {

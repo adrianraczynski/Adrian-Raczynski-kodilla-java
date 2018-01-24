@@ -99,23 +99,23 @@ public class BookDirectoryTestSuite {
     }
 
     @Test
-    public void listBooksInHandsOf () {
+    public void listBooksInHandsOf0 () {
         // Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
 
-        List <Book> listOfBooks = new ArrayList <Book>();
+        List <Book> listOf0Books = new ArrayList <Book>();
         LibraryUser user = new LibraryUser("Adrian","Raczynski","123456789");
 
 
-        when (libraryDatabaseMock.listBooksInHandsOf(user)).thenReturn(listOfBooks);
+        when (libraryDatabaseMock.listBooksInHandsOf(user)).thenReturn(listOf0Books);
 
         // When
         List <Book> listOfZeroBooks = bookLibrary.listBooksInHandsOf(user);
 
         // Then
         assertEquals(0, listOfZeroBooks.size());
-        verify(libraryDatabaseMock, times(0)).listBooksInHandsOf(user);
+        verify(libraryDatabaseMock).listBooksInHandsOf(user);
     }
 
     @Test
@@ -134,7 +134,7 @@ public class BookDirectoryTestSuite {
 
         // Then
         assertEquals(1, listOfOneBooks.size());
-        verify(libraryDatabaseMock, times(0)).listBooksInHandsOf(user);
+        verify(libraryDatabaseMock).listBooksInHandsOf(user);
     }
 
     @Test
@@ -153,6 +153,6 @@ public class BookDirectoryTestSuite {
 
         // Then
         assertEquals(5, listOfFiveBooks.size());
-        verify(libraryDatabaseMock, times(0)).listBooksInHandsOf(user);
+        verify(libraryDatabaseMock).listBooksInHandsOf(user);
     }
 }

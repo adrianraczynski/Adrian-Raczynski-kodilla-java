@@ -1,6 +1,7 @@
 package com.kodilla.testing.library;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class BookLibrary {
@@ -24,15 +25,13 @@ public class BookLibrary {
     }
 
     public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
-        List<Book> bookList2 = new ArrayList<Book>();
+        List<Book> listOfUserBooks = libraryDatabase.listBooksInHandsOf(libraryUser);
 
-        if (bookList2.size() > 0) return bookList2;
+        if (listOfUserBooks == null) {
+            return Collections.emptyList ();
 
-        List<Book> listOfBooks = libraryDatabase.listBooksInHandsOf(libraryUser);
-
-        if (bookList2.size() == 0) return bookList2;
-        bookList2 = listOfBooks;
-
-        return listOfBooks;
-     }
+        } else {
+            return listOfUserBooks;
+        }
+    }
 }

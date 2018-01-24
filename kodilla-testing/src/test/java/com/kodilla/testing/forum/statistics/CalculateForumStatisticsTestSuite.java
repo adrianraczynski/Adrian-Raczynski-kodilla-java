@@ -5,10 +5,13 @@ import org.junit.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class CalculateForumStatisticsTestSuite {
+    private static final double DELTA = 0.00001;
     private static int testCounter = 0;
     private Statistics statisticsMock;
     private CalculateForumStatistics calculate;
@@ -28,7 +31,7 @@ public class CalculateForumStatisticsTestSuite {
         testCounter++;
         System.out.println("Preparing to execute test No." + testCounter);
         statisticsMock = mock(Statistics.class);
-        calculate = new CalculateForumStatistics(statisticsMock);
+        calculate = new CalculateForumStatistics();
     }
 
     @After
@@ -40,133 +43,158 @@ public class CalculateForumStatisticsTestSuite {
     @Test
     public void testCalculateAdvStatisticsNumberOfPosts0 () {    // gdy liczba postów = 0
         //Given
+        List <String> users = generateListOfUsers (3);
+
         when(statisticsMock.postsCount()).thenReturn(0);
+        when(statisticsMock.commentsCount()).thenReturn(0);
+        when(statisticsMock.usersNames()).thenReturn(users);   // muszę przygotować liste uzytkownikow
 
         //When
         calculate.calculateAdvStatistics(statisticsMock);
-        int posts0 = calculate.getNumberOfPosts (0);
-
 
         //Then
-        Assert.assertEquals (0, posts0 );
-        Assert.assertEquals (0, calculate.getNumberOfComments(0));
-        Assert.assertEquals (0, calculate.getNumberOfUsers(0));
-        Assert.assertEquals (0, calculate.getNumberOfAvgPostPerUser(0, 0));
-        Assert.assertEquals (0, calculate.getNumberOfAvgCommentPerUser (0,0));
-        Assert.assertEquals (0, calculate.getNumberOfAvgCommentPerPost(0,0));
+        assertEquals (0, calculate.getNumberOfPosts ());
+        assertEquals (0, calculate.getNumberOfComments());
+        assertEquals (3, calculate.getNumberOfUsers());
+        assertEquals (0, calculate.getNumberOfAvgPostPerUser(0, 0), DELTA);
+        assertEquals (0, calculate.getNumberOfAvgCommentPerUser (0,0),DELTA);
+        assertEquals (0, calculate.getNumberOfAvgCommentPerPost(0,0),DELTA);
     }
 
     @Test
     public void testCalculateAdvStatisticsNumberOfPosts1000 () {    //gdy liczba postów = 1000
-        //Given
+        List<String> users = generateListOfUsers(0);
+
         when(statisticsMock.postsCount()).thenReturn(1000);
+        when(statisticsMock.commentsCount()).thenReturn(0);
+        when(statisticsMock.usersNames()).thenReturn(users);   // muszę przygotować liste uzytkownikow
 
         //When
         calculate.calculateAdvStatistics(statisticsMock);
-        int posts1000 = calculate.getNumberOfPosts (1000);
 
         //Then
-        Assert.assertEquals (1000, posts1000  );
-        Assert.assertEquals (0, calculate.getNumberOfComments(0));
-        Assert.assertEquals (0, calculate.getNumberOfUsers(0));
-        Assert.assertEquals (0, calculate.getNumberOfAvgPostPerUser(0, 0));
-        Assert.assertEquals (0, calculate.getNumberOfAvgCommentPerUser (0,0));
-        Assert.assertEquals (0, calculate.getNumberOfAvgCommentPerPost(0,0));
+        assertEquals(1000, calculate.getNumberOfPosts());
+        assertEquals(0, calculate.getNumberOfComments());
+        assertEquals(0, calculate.getNumberOfUsers());
+        assertEquals(0, calculate.getNumberOfAvgPostPerUser(0, 0), DELTA);
+        assertEquals(0, calculate.getNumberOfAvgCommentPerUser(0, 0), DELTA);
+        assertEquals(0, calculate.getNumberOfAvgCommentPerPost(0, 0), DELTA);
     }
 
      @Test
     public void testCalculateAdvStatisticsNumberOfComments0 () {    //gdy liczba komentarzy = 0
-        //Given
-        when(statisticsMock.commentsCount()).thenReturn(0);
+         //Given
+         List <String> users = generateListOfUsers (2);
 
-        //When
+         when(statisticsMock.postsCount()).thenReturn(0);
+         when(statisticsMock.commentsCount()).thenReturn(0);
+         when(statisticsMock.usersNames()).thenReturn(users);   // muszę przygotować liste uzytkownikow
+
+         //When
          calculate.calculateAdvStatistics(statisticsMock);
-         int comments0 = calculate.getNumberOfComments(0);
 
-        //Then
-         Assert.assertEquals (0, comments0 );
-         Assert.assertEquals (0, calculate.getNumberOfPosts(0));
-         Assert.assertEquals (0, calculate.getNumberOfUsers(0));
-         Assert.assertEquals (0, calculate.getNumberOfAvgPostPerUser(0, 0));
-         Assert.assertEquals (0, calculate.getNumberOfAvgCommentPerUser (0,0));
-         Assert.assertEquals (0, calculate.getNumberOfAvgCommentPerPost(0,0));
-    }
+         //Then
+         assertEquals (0, calculate.getNumberOfPosts ());
+         assertEquals (0, calculate.getNumberOfComments());
+         assertEquals (2, calculate.getNumberOfUsers());
+         assertEquals (0, calculate.getNumberOfAvgPostPerUser(0, 0), DELTA);
+         assertEquals (0, calculate.getNumberOfAvgCommentPerUser (0,0),DELTA);
+         assertEquals (0, calculate.getNumberOfAvgCommentPerPost(0,0),DELTA);
+     }
 
     @Test
     public void testCalculateAdvStatisticsNumberOfUser0 () {    //gdy liczba użytkowników = 0
         //Given
-        List<String> emptyUsersList = new ArrayList<String>();
+        List <String> users = generateListOfUsers (0);
 
-        when(statisticsMock.usersNames()).thenReturn(emptyUsersList);
+        when(statisticsMock.postsCount()).thenReturn(0);
+        when(statisticsMock.commentsCount()).thenReturn(0);
+        when(statisticsMock.usersNames()).thenReturn(users);   // muszę przygotować liste uzytkownikow
 
         //When
         calculate.calculateAdvStatistics(statisticsMock);
-        int users0 = calculate.getNumberOfUsers (0);
 
         //Then
-        Assert.assertEquals (0, users0 );
-        Assert.assertEquals (0, calculate.getNumberOfComments(0));
-        Assert.assertEquals (0, calculate.getNumberOfPosts(0));
-        Assert.assertEquals (0, calculate.getNumberOfAvgPostPerUser(0, 0));
-        Assert.assertEquals (0, calculate.getNumberOfAvgCommentPerUser (0,0));
-        Assert.assertEquals (0, calculate.getNumberOfAvgCommentPerPost(0,0));
+        assertEquals (0, calculate.getNumberOfPosts ());
+        assertEquals (0, calculate.getNumberOfComments());
+        assertEquals (0, calculate.getNumberOfUsers());
+        assertEquals (0, calculate.getNumberOfAvgPostPerUser(0, 0), DELTA);
+        assertEquals (0, calculate.getNumberOfAvgCommentPerUser (0,0),DELTA);
+        assertEquals (0, calculate.getNumberOfAvgCommentPerPost(0,0),DELTA);
     }
 
     @Test
     public void testCalculateAdvStatisticsNumberOfUser100 () {    //gdy liczba użytkowników = 100
         //Given
-        List<String> usersNamesList = new ArrayList<String>();
-        for (int i = 0; i < 100; i++) {
-            usersNamesList.add ("User No. " + i);
-        }
-        when(statisticsMock.usersNames()).thenReturn(usersNamesList);
+        List <String> users = generateListOfUsers (100);
+
+        when(statisticsMock.postsCount()).thenReturn(0);
+        when(statisticsMock.commentsCount()).thenReturn(0);
+        when(statisticsMock.usersNames()).thenReturn(users);   // muszę przygotować liste uzytkownikow
 
         //When
         calculate.calculateAdvStatistics(statisticsMock);
-        int users100 = calculate.getNumberOfUsers (100);
 
         //Then
-        Assert.assertEquals (100, users100 );
-        Assert.assertEquals (0, calculate.getNumberOfComments(0));
-        Assert.assertEquals (0, calculate.getNumberOfPosts(0));
-        Assert.assertEquals (0, calculate.getNumberOfAvgPostPerUser(0, 0));
-        Assert.assertEquals (0, calculate.getNumberOfAvgCommentPerUser (0,0));
-        Assert.assertEquals (0, calculate.getNumberOfAvgCommentPerPost(0,0));
+        assertEquals (0, calculate.getNumberOfPosts ());
+        assertEquals (0, calculate.getNumberOfComments());
+        assertEquals (100, calculate.getNumberOfUsers());
+        assertEquals (0, calculate.getNumberOfAvgPostPerUser(0, 0), DELTA);
+        assertEquals (0, calculate.getNumberOfAvgCommentPerUser (0,0),DELTA);
+        assertEquals (0, calculate.getNumberOfAvgCommentPerPost(0,0),DELTA);
+        }
+
+    @Test
+        public void testCalculateAdvStatisticsNumberOfCommentsLessThanPosts () {    //gdy liczba komentarzy < postów
+         //Given
+         List <String> users = generateListOfUsers (0);
+
+         when(statisticsMock.postsCount()).thenReturn(500);
+         when(statisticsMock.commentsCount()).thenReturn(250);
+         when(statisticsMock.usersNames()).thenReturn(users);
+
+         //When
+         calculate.calculateAdvStatistics(statisticsMock);
+
+         //Then
+         assertEquals (500, calculate.getNumberOfPosts ());
+         assertEquals (250, calculate.getNumberOfComments());
+         assertEquals (0, calculate.getNumberOfUsers());
+         assertEquals (0, calculate.getNumberOfAvgPostPerUser(0, 0), DELTA);
+         assertEquals (0, calculate.getNumberOfAvgCommentPerUser (0,0),DELTA);
+         assertEquals (0, calculate.getNumberOfAvgCommentPerPost(0,0),DELTA);
+         }
+
+
+    @Test
+    public void testCalculateAdvStatisticsNumberOfPostsLessThanComments () {    //gdy liczba komentarzy > postów
+         //Given
+         List <String> users = generateListOfUsers (0);
+
+         when(statisticsMock.postsCount()).thenReturn(100);
+         when(statisticsMock.commentsCount()).thenReturn(500);
+         when(statisticsMock.usersNames()).thenReturn(users);
+
+         //When
+         calculate.calculateAdvStatistics(statisticsMock);
+
+         //Then
+         assertEquals (100, calculate.getNumberOfPosts ());
+         assertEquals (500, calculate.getNumberOfComments());
+         assertEquals (0, calculate.getNumberOfUsers());
+         assertEquals (0, calculate.getNumberOfAvgPostPerUser(0, 0), DELTA);
+         assertEquals (0, calculate.getNumberOfAvgCommentPerUser (0,0),DELTA);
+         assertEquals (5, calculate.getNumberOfAvgCommentPerPost(200,100),DELTA);
+         }
+
+
+    private List<String> generateListOfUsers(int usersQuantity) {
+        List<String> resultList = new ArrayList <String>();
+        for (int n = 1; n <= usersQuantity; n++) {
+            String user = "user" + n;
+            resultList.add(user);
+        }
+        return resultList;
     }
-
-    /**
-     @Test
-     public void testCalculateAdvStatistics4 () {    // gdy liczba komentarzy < liczba postów
-     //Given
-     List<String> usersNamesList = new ArrayList<String>();
-
-     when(statisticsMock.postsCount()).thenReturn(200);
-     when(statisticsMock.commentsCount()).thenReturn(25);
-
-     //When
-        calculate.calculateAdvStatistics(statisticsMock);
-        int quantityOfUsers= calculateForumStatistics.calculateAdvStatistics().size();
-
-     //Then
-         Assert.assertEquals (7, quantityOfUsers );
-     }
-
-
-     @Test
-     public void testCalculateAdvStatistics5 () {    //gdy liczba komentarzy > liczba postów
-     //Given
-     List<String> usersNamesList = new ArrayList<String>();
-
-     when(statisticsMock.postsCount()).thenReturn(25);
-     when(statisticsMock.commentsCount()).thenReturn(200);
-
-     //When
-     int quantityOfUsers= calculateForumStatistics.calculateAdvStatistics().size();
-
-     //Then
-     Assert.assertEquals (7, quantityOfUsers );
-     }
-
-     **/
 }
 
