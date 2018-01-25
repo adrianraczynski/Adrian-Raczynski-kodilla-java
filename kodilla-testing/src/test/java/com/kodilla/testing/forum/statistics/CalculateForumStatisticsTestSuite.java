@@ -56,9 +56,9 @@ public class CalculateForumStatisticsTestSuite {
         assertEquals (0, calculate.getNumberOfPosts ());
         assertEquals (0, calculate.getNumberOfComments());
         assertEquals (3, calculate.getNumberOfUsers());
-        assertEquals (0, calculate.getNumberOfAvgPostPerUser(0, 0), DELTA);
-        assertEquals (0, calculate.getNumberOfAvgCommentPerUser (0,0),DELTA);
-        assertEquals (0, calculate.getNumberOfAvgCommentPerPost(0,0),DELTA);
+        assertEquals (0.0, calculate.getNumberOfAvgPostPerUser(), DELTA);
+        assertEquals (0.0, calculate.getNumberOfAvgCommentPerUser (),DELTA);
+        assertEquals (0.0, calculate.getNumberOfAvgCommentPerPost(),DELTA);
     }
 
     @Test
@@ -76,9 +76,9 @@ public class CalculateForumStatisticsTestSuite {
         assertEquals(1000, calculate.getNumberOfPosts());
         assertEquals(0, calculate.getNumberOfComments());
         assertEquals(0, calculate.getNumberOfUsers());
-        assertEquals(0, calculate.getNumberOfAvgPostPerUser(0, 0), DELTA);
-        assertEquals(0, calculate.getNumberOfAvgCommentPerUser(0, 0), DELTA);
-        assertEquals(0, calculate.getNumberOfAvgCommentPerPost(0, 0), DELTA);
+        assertEquals(0.0, calculate.getNumberOfAvgPostPerUser(), DELTA);
+        assertEquals(0.0, calculate.getNumberOfAvgCommentPerUser(), DELTA);
+        assertEquals(0.0, calculate.getNumberOfAvgCommentPerPost(), DELTA);
     }
 
      @Test
@@ -97,9 +97,9 @@ public class CalculateForumStatisticsTestSuite {
          assertEquals (0, calculate.getNumberOfPosts ());
          assertEquals (0, calculate.getNumberOfComments());
          assertEquals (2, calculate.getNumberOfUsers());
-         assertEquals (0, calculate.getNumberOfAvgPostPerUser(0, 0), DELTA);
-         assertEquals (0, calculate.getNumberOfAvgCommentPerUser (0,0),DELTA);
-         assertEquals (0, calculate.getNumberOfAvgCommentPerPost(0,0),DELTA);
+         assertEquals (0.0, calculate.getNumberOfAvgPostPerUser(), DELTA);
+         assertEquals (0.0, calculate.getNumberOfAvgCommentPerUser (),DELTA);
+         assertEquals (0.0, calculate.getNumberOfAvgCommentPerPost(),DELTA);
      }
 
     @Test
@@ -118,9 +118,9 @@ public class CalculateForumStatisticsTestSuite {
         assertEquals (0, calculate.getNumberOfPosts ());
         assertEquals (0, calculate.getNumberOfComments());
         assertEquals (0, calculate.getNumberOfUsers());
-        assertEquals (0, calculate.getNumberOfAvgPostPerUser(0, 0), DELTA);
-        assertEquals (0, calculate.getNumberOfAvgCommentPerUser (0,0),DELTA);
-        assertEquals (0, calculate.getNumberOfAvgCommentPerPost(0,0),DELTA);
+        assertEquals (0.0, calculate.getNumberOfAvgPostPerUser(), DELTA);
+        assertEquals (0.0, calculate.getNumberOfAvgCommentPerUser (),DELTA);
+        assertEquals (0.0, calculate.getNumberOfAvgCommentPerPost(),DELTA);
     }
 
     @Test
@@ -139,9 +139,9 @@ public class CalculateForumStatisticsTestSuite {
         assertEquals (0, calculate.getNumberOfPosts ());
         assertEquals (0, calculate.getNumberOfComments());
         assertEquals (100, calculate.getNumberOfUsers());
-        assertEquals (0, calculate.getNumberOfAvgPostPerUser(0, 0), DELTA);
-        assertEquals (0, calculate.getNumberOfAvgCommentPerUser (0,0),DELTA);
-        assertEquals (0, calculate.getNumberOfAvgCommentPerPost(0,0),DELTA);
+        assertEquals (0.0, calculate.getNumberOfAvgPostPerUser(), DELTA);
+        assertEquals (0.0, calculate.getNumberOfAvgCommentPerUser (),DELTA);
+        assertEquals (0.0, calculate.getNumberOfAvgCommentPerPost(),DELTA);
         }
 
     @Test
@@ -160,9 +160,9 @@ public class CalculateForumStatisticsTestSuite {
          assertEquals (500, calculate.getNumberOfPosts ());
          assertEquals (250, calculate.getNumberOfComments());
          assertEquals (0, calculate.getNumberOfUsers());
-         assertEquals (0, calculate.getNumberOfAvgPostPerUser(0, 0), DELTA);
-         assertEquals (0, calculate.getNumberOfAvgCommentPerUser (0,0),DELTA);
-         assertEquals (0, calculate.getNumberOfAvgCommentPerPost(0,0),DELTA);
+         assertEquals (0.0, calculate.getNumberOfAvgPostPerUser(), DELTA);
+         assertEquals (0.0, calculate.getNumberOfAvgCommentPerUser (),DELTA);
+         assertEquals (0.5, calculate.getNumberOfAvgCommentPerPost(),DELTA);
          }
 
 
@@ -182,9 +182,9 @@ public class CalculateForumStatisticsTestSuite {
          assertEquals (100, calculate.getNumberOfPosts ());
          assertEquals (500, calculate.getNumberOfComments());
          assertEquals (0, calculate.getNumberOfUsers());
-         assertEquals (0, calculate.getNumberOfAvgPostPerUser(0, 0), DELTA);
-         assertEquals (0, calculate.getNumberOfAvgCommentPerUser (0,0),DELTA);
-         assertEquals (5, calculate.getNumberOfAvgCommentPerPost(200,100),DELTA);
+         assertEquals (0.0, calculate.getNumberOfAvgPostPerUser(), DELTA);
+         assertEquals (0.0, calculate.getNumberOfAvgCommentPerUser (),DELTA);
+         assertEquals (5.0, calculate.getNumberOfAvgCommentPerPost(),DELTA);
          }
 
 

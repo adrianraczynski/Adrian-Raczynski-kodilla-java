@@ -24,17 +24,16 @@ public class CalculateForumStatistics {
         return numberOfPosts;
     }
 
-    public double getNumberOfAvgPostPerUser (int numberOfPosts, int numberOfUsers) {
+    public double getNumberOfAvgPostPerUser () {
         return avgPostPerUser;
     }
 
-    public double getNumberOfAvgCommentPerUser (int numberOfComments, int numberOfUsers) {
+    public double getNumberOfAvgCommentPerUser () {
         return avgCommentPerUser;
     }
 
-    public double getNumberOfAvgCommentPerPost (int numberOfComments, int numberOfPosts) {
-        double getAvgCommentPerPost = avgCommentPerPost;
-        return getAvgCommentPerPost;
+    public double getNumberOfAvgCommentPerPost () {
+         return avgCommentPerPost;
     }
 
     public void calculateAdvStatistics (Statistics statistics) {
@@ -45,7 +44,7 @@ public class CalculateForumStatistics {
 
         if (statistics.usersNames().size() !=0 && statistics.postsCount() != 0) {
 
-            avgPostPerUser = (statistics.postsCount())/(statistics.usersNames().size());
+            avgPostPerUser = (double)(statistics.postsCount())/(statistics.usersNames().size());
 
         } else {
             avgPostPerUser = 0;
@@ -53,7 +52,7 @@ public class CalculateForumStatistics {
 
         if(statistics.usersNames().size() !=0 && statistics.commentsCount() != 0) {
 
-            avgCommentPerUser = (statistics.commentsCount())/(statistics.usersNames().size());
+            avgCommentPerUser = (double)(statistics.commentsCount())/(statistics.usersNames().size());
 
         } else {
             avgCommentPerUser = 0;
@@ -61,7 +60,7 @@ public class CalculateForumStatistics {
 
         if (statistics.commentsCount() !=0 && statistics.postsCount() != 0) {
 
-            avgCommentPerPost = (statistics.commentsCount())/(statistics.postsCount());
+            avgCommentPerPost = (double) (statistics.commentsCount())/(statistics.postsCount());
 
         } else {
             avgCommentPerPost = 0;
