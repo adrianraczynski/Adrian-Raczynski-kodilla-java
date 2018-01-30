@@ -6,10 +6,10 @@ import java.util.Set;
 
 public class Continent {
 
-    private String continentName;
-    private Set<Country> continentCountries;
+    private final String continentName;
+    private final Set<Country> continentCountries;
 
-    public Continent(String continentName, Set<Country> continentCountries) {
+    public Continent(final String continentName, final Set<Country> continentCountries) {
         this.continentName = continentName;
         this.continentCountries = continentCountries;
     }

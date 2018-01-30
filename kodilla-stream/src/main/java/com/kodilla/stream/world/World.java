@@ -9,7 +9,7 @@ public class World {
 
     private Set<Continent> continentList = new HashSet<>();
 
-    public World(Set<Continent> continentList) {
+    public World(final Set<Continent> continentList) {
         this.continentList = continentList;
     }
 
