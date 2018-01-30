@@ -3,6 +3,7 @@ package com.kodilla.stream.portfolio;
 import org.junit.Assert;
 import org.junit.Test;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,7 +110,7 @@ public class BoardTestSuite {
         List<Task> tasks = project.getTaskLists().stream()
                 .filter(undoneTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
-                .filter(t -> t.getDeadline().isBefore(LocalDate.now()))
+                .filter(t -> t.getDeadline().isBefore(LocalDate.now()))         //nie rozumiem, które zadania są "przeterminowane", na co ja mam patrześ w obiektach task...
                 .collect(toList());
 
         //Then
@@ -134,5 +135,26 @@ public class BoardTestSuite {
 
         //Then
         Assert.assertEquals(2, longTasks);
+    }
+
+    @Test
+    public void testAddTaskListAverageWorkingOnTask() {
+        //Given
+        Board project = prepareTestData();
+
+        //When
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+        double aveNumOfDays = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .mapToDouble(t->ChronoUnit.DAYS.between(t.getCreated(), t.getDeadline()))
+                .average()
+                .getAsDouble();
+
+        //Then
+        Assert.assertEquals (18.3,aveNumOfDays,0.1);
+
+
     }
 }

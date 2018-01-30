@@ -10,8 +10,8 @@ public class ArrayOperationsTestSuite {
 
         //Given
         int numbers [] = new int [20];
-            for(int n=0; n<numbers.length; n++) {
-                numbers [n] = n+1;
+            for(int i=0; i<numbers.length; i++) {
+                numbers [i] = i+1;
             }
 
         //When
