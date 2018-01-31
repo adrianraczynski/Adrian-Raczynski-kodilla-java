@@ -1,4 +1,17 @@
 package com.kodilla.exception.test;
 
 public class ExceptionHandling {
+
+    public static void main(String[] args) throws Exception {
+
+        SecondChallenge secondChallenge = new SecondChallenge();
+
+        try {
+            secondChallenge.probablyIWillThrowException(5, 0.0);
+
+        } catch (Exception e) {
+
+            System.out.println("Yoy can't put number in argument :(" + e);
+        }
+    }
 }

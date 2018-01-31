@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class FirstChallenge {
 
-    public void divide(double a, double b) throws ArithmeticException {
+    public double divide(double a, double b) throws ArithmeticException {
 
        try {
 
@@ -21,7 +21,7 @@ public class FirstChallenge {
             System.out.println("Mathematic is soo beautiful...");
 
         }
-
+        return a/b;
     }
 
 
