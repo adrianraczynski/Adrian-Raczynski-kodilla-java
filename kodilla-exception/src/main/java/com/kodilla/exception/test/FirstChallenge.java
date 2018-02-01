@@ -10,6 +10,8 @@ public class FirstChallenge {
 
            if(b == 0){
                throw new ArithmeticException();
+           } else {
+               return a/b;
            }
 
        } catch (RuntimeException e) {
@@ -33,8 +35,6 @@ public class FirstChallenge {
 
         FirstChallenge firstChallenge = new FirstChallenge();
 
-        firstChallenge.divide(3.1, 0.0);
-
-
+        System.out.println(firstChallenge.divide(3.1, 0.0));
     }
 }
