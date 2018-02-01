@@ -11,7 +11,7 @@ public class ExceptionHandling {
 
         } catch (Exception e) {
 
-            System.out.println("Yoy can't put number in argument :(" + e);
+            System.out.println("Yoy can't put number in argument - " + e);
         }
     }
 }
