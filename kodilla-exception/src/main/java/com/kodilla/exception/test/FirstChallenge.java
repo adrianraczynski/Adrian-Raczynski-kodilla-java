@@ -1,20 +1,26 @@
 package com.kodilla.exception.test;
 
-import java.io.IOException;
-
 public class FirstChallenge {
 
     public double divide(double a, double b) throws ArithmeticException {
+        if(b == 0){
+            throw new ArithmeticException();
+        }
+        return a / b;
+    }
 
-       try {
 
-           if(b == 0){
-               throw new ArithmeticException();
-           } else {
-               return a/b;
-           }
+    public static void main(String[] args) {
 
-       } catch (RuntimeException e) {
+        FirstChallenge firstChallenge = new FirstChallenge();
+
+        try {
+
+            double result = firstChallenge.divide(3, 0);
+
+            System.out.println(result);
+
+        }catch (Exception e) {
 
             System.out.println("Yoy can't do that :(" + e);
 
@@ -23,18 +29,9 @@ public class FirstChallenge {
             System.out.println("Mathematic is soo beautiful...");
 
         }
-        return a/b;
-    }
-
-
-    /**
-     * This main can throw an ArithmeticException!!!
-     * @param args
-     */
-    public static void main(String[] args) {
-
-        FirstChallenge firstChallenge = new FirstChallenge();
-
-        System.out.println(firstChallenge.divide(3.1, 0.0));
     }
 }
+
+
+
+

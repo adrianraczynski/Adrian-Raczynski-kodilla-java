@@ -5,37 +5,33 @@ import java.util.Map;
 
 public class FlightSearch {
 
-    public Map<String, Boolean> findFlight(Flight flight) throws RouteNotFoundException {
+    private Map <String,Boolean> flightsMap;
 
-        Map <String, Boolean> flightsMap = new HashMap();
+    public FlightSearch() {
 
-        for (Map.Entry<String,Boolean> entry : flightsMap.entrySet()) {
+        prepareFlightSchedul();
 
-            if (entry.getKey() == null) {
+    }
 
-                if (entry.getValue() == false) {
-                    throw new RouteNotFoundException();
-                }
-            }
+    public void findFlight(Flight flight) throws RouteNotFoundException {
+
+        String destination = flight.getArrivalAirport();
+        if (flightsMap.containsKey(destination) && flightsMap.get(destination) == true) {
+
+            System.out.println("Selected city is on the Schedul. You can flight to" + destination);
+
+        } else {
+
+            throw new RouteNotFoundException();
         }
-        return flightsMap;
+    }
+
+    private void prepareFlightSchedul() {
+        flightsMap = new HashMap<>();
+        flightsMap.put ("Tokio",true);
+        flightsMap.put ("Cracow",true);
+        flightsMap.put ("Warsaw",true);
+        flightsMap.put ("Babimost",false);
+        flightsMap.put ("Szczecin",false);
     }
 }
-
-
-/**
- Stwórz klasę zawierającą logikę imitującą wyszukiwanie lotów:
- a) metoda findFilght (Flight flight)
-
- b) wewnątrz metody zaimplementuj mapę typu HashMap, której kluczem będzie String przechowujący
- nazwę lotniska, a wartością Boolean informujący o tym czy można na dane lotnisko polecieć.
- Przykład: Map<String, Boolean>.
-
- c) logika powinna wyszukiwać loty w mapie. Jeżeli dane lotnisko nie będzie istnieć w mapie, należy
- rzucić wyjątkiem RouteNotFoundException.
-
- Program należy uruchomić wewnątrz metody main, a następnie obsłużyć możliwe pojawienie się
- wyjątku.
-
-
- **/

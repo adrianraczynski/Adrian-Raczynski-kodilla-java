@@ -7,14 +7,19 @@ public class FlightSearchApplication {
 
     public static void main(String[] args) {
 
-        Flight myFlights = new Flight ("Honkong", "Honkong");
-
         FlightSearch flightSearch = new FlightSearch ();
 
+        Flight myFlights = new Flight ("Paris", null);
 
-        System.out.println(flightSearch.findFlight (myFlights));
 
+        try {
 
+            flightSearch.findFlight (myFlights);
+
+        } catch (RouteNotFoundException e) {
+
+            System.out.println("We haven't this airport on the list.  Fault: " + e);
+
+        }
     }
 }
-
