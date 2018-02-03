@@ -22,11 +22,11 @@ public class FirstChallenge {
 
         }catch (Exception e) {
 
-            System.out.println("Yoy can't do that :(" + e);
+            System.out.println("Yoy can't divide by zero. Exception: " + e);
 
         } finally {
 
-            System.out.println("Mathematic is soo beautiful...");
+            System.out.println("Mathematic is soo hard...");
 
         }
     }
