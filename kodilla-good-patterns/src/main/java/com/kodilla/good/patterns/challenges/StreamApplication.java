@@ -1,6 +1,8 @@
 package com.kodilla.good.patterns.challenges;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StreamApplication {
 
@@ -8,13 +10,10 @@ public class StreamApplication {
 
         MovieStore movieStore = new MovieStore();
 
-        List<String> xyz = movieStore.getMovies().values().stream()
-                .flatMap ()
-                .filter()
-                .forEach (System.out::println);
+        String xyz = movieStore.getMovies().values().stream()
+                   .flatMap(s -> s.stream())                            //lub flatMap(Collection::stream)
+                   .collect(Collectors.joining("!"));
+
+        System.out.println(xyz);
     }
 }
-
-
-
-//wykonaj iterację po poniższej mapie tytułów i wyświetl wszystkie tytuły w jednym ciągu separując je wykrzyknikiem:
