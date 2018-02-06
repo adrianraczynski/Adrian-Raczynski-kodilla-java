@@ -6,13 +6,13 @@ public class Product {
 
     private String productCategory;
     private String productName;
-    private double productPrie;
+    private double productPrice;
     private int productNumber;
 
-    public Product(String productCategory, String productName, double productPrie, int productNumber) {
+    public Product(String productCategory, String productName, double productPrice, int productNumber) {
         this.productCategory = productCategory;
         this.productName = productName;
-        this.productPrie = productPrie;
+        this.productPrice = productPrice;
         this.productNumber = productNumber;
     }
 
@@ -25,11 +25,17 @@ public class Product {
     }
 
     public double getProductPrie() {
-        return productPrie;
+        return productPrice;
     }
 
     public int getProductNumber() {
         return productNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Product: " + productName + ", Price: " + productPrice + "\n" +
+                "Category: " + productCategory +  " $" + ", Product Number: " + productNumber;
     }
 
     @Override

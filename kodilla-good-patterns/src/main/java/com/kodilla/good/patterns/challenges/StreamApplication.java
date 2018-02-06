@@ -17,3 +17,16 @@ public class StreamApplication {
         System.out.println(xyz);
     }
 }
+
+/**
+Inne rozwiązanie:
+
+        MovieStore movieStore = new MovieStore();
+
+        String newMovieList = movieStore.getMovies().entrySet().stream()
+        .flatMap(n -> n.getValue().stream())
+        .collect(Collectors.joining("!"));
+
+        System.out.println(newMovieList);
+
+ **/

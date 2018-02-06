@@ -9,9 +9,8 @@ public class Application {
 
         OrderRequest orderRequest = new OrderRequest(user, product);
 
-        //OrderProcessor orderProcessor = new OrderProcessor(new MailService(), new OrderProductService (), new OrderProductRepository ()); // Czy trzeba utworzyć nowe klasy na bazie tych konstruktorów, które będą implementowały interfejsy zawarte
-        //orderProcessor.process(orderRequest);
-
-
+        OrderProcessor orderProcessor = new OrderProcessor(new MailService(), new OrderProductService (), new OrderProductRepository ());
+        orderProcessor.process(orderRequest);
     }
 }
+
