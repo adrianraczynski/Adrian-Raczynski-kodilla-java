@@ -14,16 +14,22 @@ public class Flight {
         private LocalDate arrivalDate;
 
 
-    public Flight(String departureAirport, String arrivalAirport, int hour, int minute, int year,
-                  int month, int day) {
+    public Flight(String departureAirport, String arrivalAirport) {
+
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
+    }
+
+    /**
+    , int hour, int minute, int year,
+                  int month, int day) {
+
         this.departureTime = LocalTime.of(hour, minute);
         this.arrivalTime = LocalTime.of(hour, minute);
         this.departureDate = LocalDate.of(year, month, day);
         this.arrivalDate = LocalDate.of(year, month, day);
+     **/
 
-    }
 
     public String getDepartureAirport() {
         return departureAirport;
@@ -31,6 +37,18 @@ public class Flight {
 
     public String getArrivalAirport() {
         return arrivalAirport;
+    }
+
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "departureAirport='" + departureAirport + '\'' +
+                ", arrivalAirport='" + arrivalAirport + '\'' +
+                ", departureTime=" + departureTime +
+                ", arrivalTime=" + arrivalTime +
+                ", departureDate=" + departureDate +
+                ", arrivalDate=" + arrivalDate +
+                '}';
     }
 
     @Override
