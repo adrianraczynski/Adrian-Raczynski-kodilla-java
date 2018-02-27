@@ -17,15 +17,6 @@ public class BoardTestSuite {
                 AnnotationConfigApplicationContext(BoardConfig.class);
         Board board = context.getBean(Board.class);
 
-        List<String> toDoList = new ArrayList<>();
-        toDoList.add ("Task number 1");
-
-        List<String> inProgressList = new ArrayList<>();
-        inProgressList.add ("Task number 2");
-
-        List<String> doneList = new ArrayList<>();
-        doneList.add ("Task number 3");
-
         //When
         String checkToDoList = board.showToDoList();
         String checkInProgressList = board.showInProgressList ();
@@ -33,8 +24,9 @@ public class BoardTestSuite {
 
         //Then
 
-        Assert.assertEquals ("Task number 1", checkToDoList);
-        Assert.assertEquals ("Task number 2", checkInProgressList);
-        Assert.assertEquals ("Task number 3", checkDoneList);
+        Assert.assertEquals ("To do list: [Task number 1]", checkToDoList);
+        Assert.assertEquals ("List of progress tasks: [Task number 2]", checkInProgressList);
+        Assert.assertEquals ("List of completed tasks: [Task number 3]", checkDoneList);
     }
 }
+

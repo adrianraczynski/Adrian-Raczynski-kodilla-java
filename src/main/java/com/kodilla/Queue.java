@@ -13,6 +13,5 @@ public class Queue {
             listOfA.offer(new Inscription().generateRepeatingA('a', theGenerator.nextInt(50)));
         }
         return listOfA;
-
     }
 }

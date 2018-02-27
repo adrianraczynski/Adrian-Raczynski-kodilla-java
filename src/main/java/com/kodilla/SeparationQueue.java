@@ -10,22 +10,18 @@ public class SeparationQueue {
         ArrayList <String> listOfEvenA = new ArrayList();
         ArrayList <String> listOfOddA = new ArrayList();
 
-        for (int i=0; i <list.size(); i++) {
+        while (list.size()>0) {
 
             if (list.peek().length() % 2 != 0) {
-
                 listOfEvenA.add(list.poll());
 
             } else {
-
                 listOfOddA.add(list.poll());
-
             }
         }
 
         System.out.println("List of even 'a': " + listOfEvenA + "\n" + "Number of elements in even list: " + listOfEvenA.size() + "\n"
 
                             + "\n" + "List of odd 'a': " + listOfOddA + "\n" + "Number of elements in odd list: " + listOfOddA.size());
-
         }
 }
