@@ -1,15 +1,19 @@
 package com.kodilla.patterns.singleton;
 
-import com.kodilla.patterns.Logger;
+import com.kodilla.patterns.singelton.Logger;
 import org.junit.*;
 
 public class LoggerTestSuite {
     private static Logger logger;
 
+    @Before
+    public void beforeEveryTest() {
+        logger = new Logger();
+    }
+
     @BeforeClass
     public static void beforeTest () {
        System.out.println("This is the beginning of tests.");
-       logger = new Logger();
        logger.getInstance().log("01234");
     }
 

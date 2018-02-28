@@ -1,5 +1,6 @@
-package com.kodilla.patterns;
+package com.kodilla.patterns.singleton;
 
+import com.kodilla.patterns.singelton.SettingsFileEngine;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;

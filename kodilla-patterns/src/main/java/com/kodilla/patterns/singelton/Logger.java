@@ -1,4 +1,4 @@
-package com.kodilla.patterns;
+package com.kodilla.patterns.singelton;
 
 public class Logger {
 
@@ -8,7 +8,7 @@ public class Logger {
 
     public static Logger getInstance() {
         if (loggerInstance == null) {
-            synchronized(SettingsFileEngine.class) {
+            synchronized(Logger.class) {
                 if (loggerInstance == null) {
                     loggerInstance = new Logger();
                 }
