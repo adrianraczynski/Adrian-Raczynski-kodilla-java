@@ -16,7 +16,6 @@ public class TaskFactoryTestSuite {
         Assert.assertEquals (true, shop.isTaskExecuted());
     }
 
-
     @Test
     public void testDrivingTask() {
         //Given
