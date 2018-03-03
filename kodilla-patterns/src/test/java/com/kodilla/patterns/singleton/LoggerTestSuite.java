@@ -4,18 +4,15 @@ import com.kodilla.patterns.singelton.Logger;
 import org.junit.*;
 
 public class LoggerTestSuite {
-    private static Logger logger;
+    private Logger logger;
 
     @Before
     public void beforeEveryTest() {
         logger = new Logger();
+        System.out.println("This is the beginning of tests.");
+        logger.getInstance().log("01234");
     }
 
-    @BeforeClass
-    public static void beforeTest () {
-       System.out.println("This is the beginning of tests.");
-       logger.getInstance().log("01234");
-    }
 
     @AfterClass
     public static void afterTests () {
