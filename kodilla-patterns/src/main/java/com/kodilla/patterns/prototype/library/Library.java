@@ -3,7 +3,7 @@ package com.kodilla.patterns.prototype.library;
 import java.util.HashSet;
 import java.util.Set;
 
-public final class Library {
+public final class Library extends Prototype{
     String name;
     Set<Book> books = new HashSet<>();
 

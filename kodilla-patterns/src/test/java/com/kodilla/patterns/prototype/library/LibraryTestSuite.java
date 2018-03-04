@@ -10,15 +10,19 @@ import java.util.Set;
 public class LibraryTestSuite {
 
     @Test
-    public void testGetBooks() {
+    public void testGetBooks()  {
         //given
         Library library = new Library("Crimes stories.");
 
-        library.getBooks().add(new Book ("The Godfather", "Mario Puzo", LocalDate.of(1969, 07, 19)));
-        library.getBooks().add(new Book ("The Last Done", "Mario Puzo", LocalDate.of(1996, 11, 28)));
-        library.getBooks().add(new Book ("The Sicilian", "Mario Puzo", LocalDate.of(1984, 03, 05)));
-        library.getBooks().add(new Book ("Omerta", "Mario Puzo", LocalDate.of(2000, 01, 10)));
+        Book book1 = new Book ("The Godfather", "Mario Puzo", LocalDate.of(1969, 07, 19));
+        Book book2 = new Book ("The Last Done", "Mario Puzo", LocalDate.of(1996, 11, 28));
+        Book book3 = new Book ("The Sicilian", "Mario Puzo", LocalDate.of(1984, 03, 05));
+        Book book4 = new Book ("Omerta", "Mario Puzo", LocalDate.of(2000, 01, 10));
 
+        library.getBooks().add(book1);
+        library.getBooks().add(book2);
+        library.getBooks().add(book3);
+        library.getBooks().add(book4);
 
         //making a shallow clone of object library
         Library clonedLibrary = null;
@@ -39,10 +43,8 @@ public class LibraryTestSuite {
             System.out.println(e);
         }
 
-
-
         //When
-        library.getBooks().remove(new Book ("The Godfather", "Mario Puzo", LocalDate.of(1969, 07, 19)));
+        library.getBooks().remove(book4);
 
         //Then
         System.out.println(library);
