@@ -3,14 +3,15 @@ package com.kodilla.patterns.singleton;
 import com.kodilla.patterns.singelton.Logger;
 import org.junit.*;
 
+import static org.junit.Assert.assertEquals;
+
 public class LoggerTestSuite {
-    private Logger logger;
 
     @Before
     public void beforeEveryTest() {
-        logger = new Logger();
+        Logger logger = Logger.getInstance();
         System.out.println("This is the beginning of tests.");
-        logger.getInstance().log("01234");
+        logger.log("01234");
     }
 
 
@@ -23,8 +24,8 @@ public class LoggerTestSuite {
     public void getLastLog() {
         //Given
         //When
-        String testLog = logger.getInstance().getLastLog();
+        String testLog = Logger.getInstance().getLastLog();
         //Then
-        Assert.assertEquals("01234", testLog);
+        assertEquals("01234", testLog);
     }
 }

@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class LibraryTestSuite2 {
 
-    /**  @Test
+    @Test
     public void testShallowClone() throws CloneNotSupportedException {
         //given
         Library library = makeLibrary();
@@ -22,8 +22,11 @@ public class LibraryTestSuite2 {
             clonedLibrary = library.shallowCopy();
             clonedLibrary.setName("Romances.");
 
+
+         Book book1 = new Book ("The Godfather", "Mario Puzo", LocalDate.of(1969, 07, 19));
+
         //When
-        library.getBooks().remove(makeBookObject(book1));
+        library.getBooks().remove(book1);
 
         //Then
         System.out.println(library);
@@ -44,6 +47,8 @@ public class LibraryTestSuite2 {
             deepClonedLibrary = library.deepCopy();
             deepClonedLibrary.setName("Dramas.");
 
+        Book book4 = new Book ("Omerta", "Mario Puzo", LocalDate.of(2000, 01, 10));
+
         //When
         library.getBooks().remove(book4);
 
@@ -54,7 +59,7 @@ public class LibraryTestSuite2 {
         Assert.assertEquals(3, library.getBooks().size());
         Assert.assertEquals(4, deepClonedLibrary.getBooks().size());
         Assert.assertNotEquals(deepClonedLibrary.getBooks().size(), library.getBooks().size());
-    } **/
+    }
 
     private Library makeLibrary () {
         Library exampleLibrary = new Library("Crimes stories.");
