@@ -1,8 +1,10 @@
-package com.kodilla.good.patterns.flights;
+/**
+
+ package com.kodilla.good.patterns.flights;
 
 public class SearchFlightProcessor {
 
-    /**
+
 
     private MomondoServis flightSchedule;
 
@@ -36,5 +38,7 @@ public class SearchFlightProcessor {
         }
 
         return flightSchedule;
-    }   **/
+    }
 }
+
+        **/

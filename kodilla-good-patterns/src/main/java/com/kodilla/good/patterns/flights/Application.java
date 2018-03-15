@@ -1,3 +1,5 @@
+/**
+
 package com.kodilla.good.patterns.flights;
 
 import com.kodilla.good.patterns.food2door.Processor;
@@ -19,9 +21,9 @@ public class Application {
         FlightRequest flightRequest = new FlightRequest ();
 
         SearchFlightProcessor searchFlightProcessor = new SearchFlightProcessor(new MomondoServis(flightsList));
-        searchFlightProcessor.runProcessor (flightRequest /**albo zrobić metodę flightRequest**/);
-
-
+        searchFlightProcessor.runProcessor (flightRequest /**albo zrobić metodę flightRequest);
 
     }
 }
+
+**/

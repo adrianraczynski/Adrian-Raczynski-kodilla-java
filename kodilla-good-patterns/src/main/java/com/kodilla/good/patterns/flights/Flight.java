@@ -1,3 +1,5 @@
+/**
+
 package com.kodilla.good.patterns.flights;
 
 import java.time.LocalDate;
@@ -20,7 +22,7 @@ public class Flight {
         this.arrivalAirport = arrivalAirport;
     }
 
-    /**
+
     , int hour, int minute, int year,
                   int month, int day) {
 
@@ -28,7 +30,7 @@ public class Flight {
         this.arrivalTime = LocalTime.of(hour, minute);
         this.departureDate = LocalDate.of(year, month, day);
         this.arrivalDate = LocalDate.of(year, month, day);
-     **/
+
 
 
     public String getDepartureAirport() {
@@ -70,3 +72,5 @@ public class Flight {
         return Objects.hash(departureAirport, arrivalAirport, departureTime, arrivalTime, departureDate, arrivalDate)*7;
     }
 }
+
+**/
