@@ -19,8 +19,9 @@ import java.util.List;
 public class TaskListDaoTestSuite {
     @Autowired
     private TaskListDao taskListDao;
+
     private static final String HALLO = "Test: I don't know what i'm doing.";
-    private static final String LISTNAME = "List of tasks from exercise 13.3";
+    private static final String LISTNAME = "ToDo List";
 
 
     @Test
@@ -40,6 +41,7 @@ public class TaskListDaoTestSuite {
         int id = readTaskList.get(0).getId();
         taskListDao.delete(id);
     }
+
 
     @Test
     public void testTaskListDaoSaveWithTasks() {
