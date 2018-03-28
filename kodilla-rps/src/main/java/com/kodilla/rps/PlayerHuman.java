@@ -1,44 +1,55 @@
 package com.kodilla.rps;
 
-import java.util.Objects;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
 
 public class PlayerHuman implements Player {
 
     private String namePlayer;
-    private String surnamePlayer;
-    private int AgePlayer;
+    private String surname;
+    private String nickPlayer;
+    private int agePlayer;
+    private Scanner scanner = new Scanner(System.in);
+    private final List<String> signs = Arrays.asList("1", "2", "3", "n", "x");
 
-    public PlayerHuman(String namePlayer, String surnamePlayer, int agePlayer) {
+    public PlayerHuman(String namePlayer, String surname, String nickPlayer, int agePlayer) {
         this.namePlayer = namePlayer;
-        this.surnamePlayer = surnamePlayer;
-        AgePlayer = agePlayer;
+        this.surname = surname;
+        this.nickPlayer = nickPlayer;
+        this.agePlayer = agePlayer;
+
     }
+
+    public String makeMove () {
+
+        String mark = scanner.next();
+        while (!signs.contains(mark)) {
+            System.out.println("Please choose different mark" );
+            mark = scanner.next();
+        }
+        return mark;
+    }
+
+
 
     public String getNamePlayer() {
         return namePlayer;
     }
 
-    public String getSurnamePlayer() {
-        return surnamePlayer;
+    public String getName() {
+        return surname;
     }
 
     public int getAgePlayer() {
-        return AgePlayer;
+        return agePlayer;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof PlayerHuman)) return false;
-        PlayerHuman playerHuman = (PlayerHuman) o;
-        return AgePlayer == playerHuman.AgePlayer &&
-                Objects.equals(namePlayer, playerHuman.namePlayer) &&
-                Objects.equals(surnamePlayer, playerHuman.surnamePlayer);
+    public String getNickPlayer() {
+        return nickPlayer;
     }
 
-    @Override
-    public int hashCode() {
 
-        return 7*Objects.hash(namePlayer, surnamePlayer, AgePlayer);
-    }
 }
