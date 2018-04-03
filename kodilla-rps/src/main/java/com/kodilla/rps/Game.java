@@ -2,15 +2,18 @@ package com.kodilla.rps;
 
 import java.util.Scanner;
 
+import static com.kodilla.rps.RpsRunner.selectRound;
+import static com.kodilla.rps.RpsRunner.showGameRules;
+
 public class Game {
 
     private PlayerHuman playerHuman;
     private PlayerComputer playerComputer;
     private int numberOfRounds;
     private Scanner scanner = new Scanner(System.in);
-    int humanCounter = 0;
-    int computerCounter = 0;
-
+    private int roundCounter = 0;                        //czy tutaj ma być private???????????
+    private int humanCounter = 0;
+    private int computerCounter = 0;
 
     public Game(PlayerHuman playerHuman, PlayerComputer playerComputer, int numberOfRounds) {
         this.playerHuman = playerHuman;
@@ -18,49 +21,52 @@ public class Game {
         this.numberOfRounds = numberOfRounds;
     }
 
-    public void xxx () { //tutaj testujemy przypadki  porownujemy
+    public void play() {
 
-        String humanSign = playerHuman.makeMove();
-        String computerSign = playerComputer.makeMove();
+        while (roundCounter < numberOfRounds) {
 
-        int humanSignINT = Integer.parseInt(humanSign);
-        int computerSignINT = Integer.parseInt(computerSign);
+            String humanSign = playerHuman.makeMove();
+            String computerSign = playerComputer.makeMove();
 
-        if (computerSignINT == 1 && humanSignINT == 2) {
-            humanCounter++;
+            if (humanSign.equals("x")) {
+                System.out.println("Game over :)");
+                break;
 
-        } else if (computerSignINT == 1 && humanSignINT == 3) {  //podać warunek, tutaj będzie pętla while
-            computerCounter++;
+            } else if (humanSign.equals("r")) {
+                System.out.println("Restart game...");
+                restartGame();
+                continue;
+            }
 
-        } else if (computerSignINT == 2 && humanSignINT == 1) {
-            computerCounter++;
+            int humanSignINT = Integer.parseInt(humanSign);
+            int computerSignINT = Integer.parseInt(computerSign);
 
-        } else if (computerSignINT == 2 && humanSignINT == 3) {
-            humanCounter++;
+            if ((computerSignINT == 1 && humanSignINT == 2) || (computerSignINT == 2 && humanSignINT == 3) || (computerSignINT == 3 && humanSignINT == 1)) {
+                humanCounter++;
 
-        } else if (computerSignINT == 3 && humanSignINT == 1) {
-            humanCounter++;
+            } else if ((computerSignINT == 1 && humanSignINT == 3) || (computerSignINT == 2 && humanSignINT == 1) || (computerSignINT == 3 && humanSignINT == 2)) {
+                computerCounter++;
 
-        } else if (computerSignINT == 3 && humanSignINT == 2) {
-            computerCounter++;
+            } else {                    //tutaj przpadek kiedy będzie po 3 z każdej strony
+                System.out.println("The round ended in a draw. Try again...");
 
-        } else if (computerSignINT == 1 && humanSignINT == 1) {
-            System.out.println("Draw the game. Try again...");
-
-        } else if (computerSignINT == 2 && humanSignINT == 2) {
-            System.out.println("Draw the game. Try again...");
-
-        } else {        //tutaj przpadek kiedy będzie po 3 z każdej strony
-            System.out.println("Draw the game. Try again...");
+            }
+            roundCounter++;
         }
-
-
-
-
     }
 
+    private void restartGame() {
 
+        roundCounter = 0;
+        humanCounter = 0;
+        computerCounter = 0;
 
+        System.out.println("Restart game...");
+    }
 
+    public void showScore () {
 
+        System.out.println("Player points: " + humanCounter);
+        System.out.println("Computer points: " + computerCounter);
+    }
 }

@@ -13,7 +13,7 @@ public class PlayerHuman implements Player {
     private String nickPlayer;
     private int agePlayer;
     private Scanner scanner = new Scanner(System.in);
-    private final List<String> signs = Arrays.asList("1", "2", "3", "n", "x");
+    private final List<String> signs = Arrays.asList("1", "2", "3", "r", "x");
 
     public PlayerHuman(String namePlayer, String surname, String nickPlayer, int agePlayer) {
         this.namePlayer = namePlayer;
@@ -27,11 +27,14 @@ public class PlayerHuman implements Player {
 
         String mark = scanner.next();
         while (!signs.contains(mark)) {
-            System.out.println("Please choose different mark" );
+            System.out.println("Please choose different mark. Just like in game rules." );
             mark = scanner.next();
         }
+        System.out.println("Player choose: " + RpsParser.xyz(mark));
         return mark;
     }
+
+
 
 
 

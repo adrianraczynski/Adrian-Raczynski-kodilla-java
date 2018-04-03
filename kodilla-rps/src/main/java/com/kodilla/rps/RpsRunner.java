@@ -14,35 +14,36 @@ public class RpsRunner {
 
         int numberOfRounds = selectRound();
         Game game = new Game (playerHuman, playerComputer, numberOfRounds);
+        showGameRules();
 
+        game.play();
+        game.showScore();
     }
 
-    private static String selectName() {
+    static String selectName() {                          // Czy ta metoda ma być private, a co z metodą restartGame() w klasie Game???
 
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter your nick name: ");
         String nickPlayer = scanner.next();
         System.out.println("Your nick is: " + nickPlayer + "\n");
-        scanner.close();
 
         return nickPlayer;
     }
 
-    private static int selectRound() {
+    static int selectRound() {
 
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Choose the number of rounds until the end of the game (1-5): ");
         int roundNumber = scanner.nextInt();
         System.out.println("Number of rounds: " + roundNumber + "\n");
-        scanner.close();
 
         return roundNumber;
 
     }
 
-    private static void showGameRules() {
+    static void showGameRules() {
 
         System.out.println("Game rules:" + "\n"
                 + "Button 1 on the keyboard - select ROCK." + "\n"
