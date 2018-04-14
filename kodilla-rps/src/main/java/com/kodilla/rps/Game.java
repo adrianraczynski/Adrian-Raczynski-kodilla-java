@@ -7,10 +7,9 @@ public class Game {
     private PlayerHuman playerHuman;
     private PlayerComputer playerComputer;
     private int numberOfRounds;
-    private Scanner scanner = new Scanner(System.in);
-    private int roundCounter = 0;                        //czy tutaj ma być private???????????
-    private int humanCounter = 0;
-    private int computerCounter = 0;
+    private int roundCounter = 0;
+    private RpsPointsCounter rpsPointsCounter = new RpsPointsCounter();
+
 
     public Game(PlayerHuman playerHuman, PlayerComputer playerComputer, int numberOfRounds) {
         this.playerHuman = playerHuman;
@@ -33,8 +32,24 @@ public class Game {
                 System.out.println("Restart game...");
                 restartGame();
                 continue;
+
             }
 
+            if (humanSign.equals("1") || humanSign.equals("2") || humanSign.equals("3")){
+
+                rpsPointsCounter.pointsCounterMechanism(humanSign, computerSign);
+
+
+            } else {
+                System.out.println("Please choose mark from the keyboard");
+
+            }
+
+            roundCounter++;
+        }
+    }
+
+            /**
             int humanSignINT = Integer.parseInt(humanSign);
             int computerSignINT = Integer.parseInt(computerSign);
 
@@ -47,23 +62,21 @@ public class Game {
             } else {                    //tutaj przpadek kiedy będzie po 3 z każdej strony
                 System.out.println("The round ended in a draw. Try again...");
 
-            }
-            roundCounter++;
-        }
-    }
+            }**/
+
 
     private void restartGame() {
 
         roundCounter = 0;
-        humanCounter = 0;
-        computerCounter = 0;
+        rpsPointsCounter.resetPoints();
 
         System.out.println("Restart game...");
     }
 
+    /**
     public void showScore () {
 
         System.out.println("Player points: " + humanCounter);
         System.out.println("Computer points: " + computerCounter);
-    }
+    }   **/
 }

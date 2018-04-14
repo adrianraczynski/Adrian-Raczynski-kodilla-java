@@ -8,18 +8,12 @@ import java.util.Scanner;
 
 public class PlayerHuman implements Player {
 
-    private String namePlayer;
-    private String surname;
     private String nickPlayer;
-    private int agePlayer;
     private Scanner scanner = new Scanner(System.in);
     private final List<String> signs = Arrays.asList("1", "2", "3", "r", "x");
 
-    public PlayerHuman(String namePlayer, String surname, String nickPlayer, int agePlayer) {
-        this.namePlayer = namePlayer;
-        this.surname = surname;
+    public PlayerHuman( String nickPlayer) {
         this.nickPlayer = nickPlayer;
-        this.agePlayer = agePlayer;
     }
 
     public String makeMove () {
@@ -33,21 +27,7 @@ public class PlayerHuman implements Player {
         return mark;
     }
 
-    public String getNamePlayer() {
-        return namePlayer;
-    }
-
     public String getName() {
-        return surname;
-    }
-
-    public int getAgePlayer() {
-        return agePlayer;
-    }
-
-    public String getNickPlayer() {
         return nickPlayer;
     }
-
-
 }
