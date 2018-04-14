@@ -10,7 +10,7 @@ public class RpsParser {
     private RpsParser() {
     }
 
-    public static String xyz (String mark) {
+    public static String giveName (String mark) {
         if (mark.equals("1")) {
             return ROCK;
 

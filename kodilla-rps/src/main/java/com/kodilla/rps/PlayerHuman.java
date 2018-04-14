@@ -20,7 +20,6 @@ public class PlayerHuman implements Player {
         this.surname = surname;
         this.nickPlayer = nickPlayer;
         this.agePlayer = agePlayer;
-
     }
 
     public String makeMove () {
@@ -30,13 +29,9 @@ public class PlayerHuman implements Player {
             System.out.println("Please choose different mark. Just like in game rules." );
             mark = scanner.next();
         }
-        System.out.println("Player choose: " + RpsParser.xyz(mark));
+        System.out.println("Player choose: " + RpsParser.giveName(mark));
         return mark;
     }
-
-
-
-
 
     public String getNamePlayer() {
         return namePlayer;

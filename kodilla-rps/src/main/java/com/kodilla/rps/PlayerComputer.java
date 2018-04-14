@@ -9,7 +9,7 @@ public class PlayerComputer implements Player {
     public String makeMove () {
 
         String mark = Integer.toString(generator.nextInt(3)+1);
-        System.out.println("Computer choose: " + RpsParser.xyz(mark));
+        System.out.println("Computer choose: " + RpsParser.giveName(mark));
         return mark;
     }
 

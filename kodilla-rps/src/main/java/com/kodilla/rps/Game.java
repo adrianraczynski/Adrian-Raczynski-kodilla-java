@@ -2,9 +2,6 @@ package com.kodilla.rps;
 
 import java.util.Scanner;
 
-import static com.kodilla.rps.RpsRunner.selectRound;
-import static com.kodilla.rps.RpsRunner.showGameRules;
-
 public class Game {
 
     private PlayerHuman playerHuman;
