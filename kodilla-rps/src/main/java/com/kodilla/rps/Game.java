@@ -7,7 +7,6 @@ public class Game {
     private int numberOfRounds;
     private int roundCounter = 0;
     private RpsPointsCounter rpsPointsCounter = new RpsPointsCounter();
-    private ShowScore showScore = new ShowScore();
 
     public Game(PlayerHuman playerHuman, PlayerComputer playerComputer, int numberOfRounds) {
         this.playerHuman = playerHuman;
