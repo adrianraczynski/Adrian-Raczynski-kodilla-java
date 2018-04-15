@@ -23,7 +23,7 @@ public class PlayerHuman implements Player {
             System.out.println("Please choose different mark. Just like in game rules." );
             mark = scanner.next();
         }
-        System.out.println("Player choose: " + RpsParser.giveName(mark));
+        System.out.println("\n" + "Player choose: " + RpsParser.giveName(mark));
         return mark;
     }
 

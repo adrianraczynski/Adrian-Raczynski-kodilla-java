@@ -1,10 +1,12 @@
 package com.kodilla.rps;
 
-
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class RpsRunner {
 
+    static final List<Integer> signNumberOfRounds = Arrays.asList(1, 2, 3, 4, 5);
 
     static String selectName() {
 
@@ -23,8 +25,13 @@ public class RpsRunner {
 
         System.out.println("Choose the number of rounds until the end of the game (1-5): ");
         int roundNumber = scanner.nextInt();
-        System.out.println("Number of rounds: " + roundNumber + "\n");
 
+        while (!signNumberOfRounds.contains(roundNumber)) {
+            System.out.println("Please choose number from the range 1-5." );
+            roundNumber = scanner.nextInt();
+        }
+
+        System.out.println("Number of rounds: " + roundNumber + "\n");
         return roundNumber;
 
     }
@@ -39,7 +46,7 @@ public class RpsRunner {
                 + "Button n                 - RESTART game." + "\n"
         );
 
-        System.out.println ("Let's start GAME..." + "Please make a move!");
+        System.out.println ("Let's start GAME..." + "Please make a move!" + "\n");
     }
 
     public static void main(String[] args){
@@ -53,8 +60,7 @@ public class RpsRunner {
 
         Game game = new Game (playerHuman, playerComputer, numberOfRounds);
         showGameRules();
-
         game.play();
-        //game.showScore();
+
     }
 }

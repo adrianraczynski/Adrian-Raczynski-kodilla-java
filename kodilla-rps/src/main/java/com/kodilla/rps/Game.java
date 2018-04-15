@@ -1,7 +1,5 @@
 package com.kodilla.rps;
 
-import java.util.Scanner;
-
 public class Game {
 
     private PlayerHuman playerHuman;
@@ -9,7 +7,7 @@ public class Game {
     private int numberOfRounds;
     private int roundCounter = 0;
     private RpsPointsCounter rpsPointsCounter = new RpsPointsCounter();
-
+    private ShowScore showScore = new ShowScore();
 
     public Game(PlayerHuman playerHuman, PlayerComputer playerComputer, int numberOfRounds) {
         this.playerHuman = playerHuman;
@@ -20,6 +18,8 @@ public class Game {
     public void play() {
 
         while (roundCounter < numberOfRounds) {
+
+            System.out.println("ROUND NUMBER: " + (roundCounter + 1));
 
             String humanSign = playerHuman.makeMove();
             String computerSign = playerComputer.makeMove();
@@ -32,38 +32,23 @@ public class Game {
                 System.out.println("Restart game...");
                 restartGame();
                 continue;
-
             }
+
 
             if (humanSign.equals("1") || humanSign.equals("2") || humanSign.equals("3")){
-
                 rpsPointsCounter.pointsCounterMechanism(humanSign, computerSign);
-
-
+                rpsPointsCounter.showPoints();
             } else {
                 System.out.println("Please choose mark from the keyboard");
-
             }
+
+            //if (roundCounter == numberOfRounds) {
+            //    System.out.println("Game is over. The winner is: " );
+            //}
 
             roundCounter++;
         }
     }
-
-            /**
-            int humanSignINT = Integer.parseInt(humanSign);
-            int computerSignINT = Integer.parseInt(computerSign);
-
-            if ((computerSignINT == 1 && humanSignINT == 2) || (computerSignINT == 2 && humanSignINT == 3) || (computerSignINT == 3 && humanSignINT == 1)) {
-                humanCounter++;
-
-            } else if ((computerSignINT == 1 && humanSignINT == 3) || (computerSignINT == 2 && humanSignINT == 1) || (computerSignINT == 3 && humanSignINT == 2)) {
-                computerCounter++;
-
-            } else {                    //tutaj przpadek kiedy będzie po 3 z każdej strony
-                System.out.println("The round ended in a draw. Try again...");
-
-            }**/
-
 
     private void restartGame() {
 
@@ -72,11 +57,4 @@ public class Game {
 
         System.out.println("Restart game...");
     }
-
-    /**
-    public void showScore () {
-
-        System.out.println("Player points: " + humanCounter);
-        System.out.println("Computer points: " + computerCounter);
-    }   **/
 }

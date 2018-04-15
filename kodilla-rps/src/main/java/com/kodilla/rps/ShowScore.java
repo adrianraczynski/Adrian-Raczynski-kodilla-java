@@ -2,12 +2,13 @@ package com.kodilla.rps;
 
 public class ShowScore {
 
-    private RpsPointsCounter rpsPointsCounter;
+   RpsPointsCounter rpsPointsCounter;
+    int humanCounter;
+    int computerCounter;
 
+    public void showPoints (int humanCounter, int computerCounter) {
 
-    public void showScore () {
-
-        //System.out.println("Player points: " + rpsPointsCounter.humanPointsCounterMechanism());
-        //System.out.println("Computer points: " + rpsPointsCounter.computerPointsCounterMechanism());
+        System.out.println("Player points: " + humanCounter);
+        System.out.println("Computer points: " + computerCounter);
     }
 }

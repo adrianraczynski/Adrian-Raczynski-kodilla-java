@@ -17,12 +17,18 @@ public class RpsPointsCounter {
             computerCounter++;
 
         } else {                    //tutaj przpadek kiedy będzie po 3 z każdej strony
-            System.out.println("The round ended in a draw. Try again...");
+            System.out.println("The round ended in a draw. Try again..." + "\n");
         }
     }
 
     public void resetPoints () {
         humanCounter = 0;
         computerCounter = 0;
+    }
+
+    public void showPoints () {
+        System.out.println("    Player points: " + humanCounter);
+        System.out.println("    Computer points: " + computerCounter + "\n");
+        System.out.println("Player win: " + humanCounter + " round(s)." + "\n");
     }
 }
