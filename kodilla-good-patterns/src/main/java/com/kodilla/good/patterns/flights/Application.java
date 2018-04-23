@@ -2,8 +2,6 @@
 
 package com.kodilla.good.patterns.flights;
 
-import com.kodilla.good.patterns.food2door.Processor;
-
 import java.util.ArrayList;
 import java.util.List;
 
