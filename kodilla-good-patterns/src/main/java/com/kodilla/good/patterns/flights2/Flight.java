@@ -25,9 +25,17 @@ public class Flight {
         return arrivalAirport;
     }
 
+    public DayOfWeek getDepartureDay() {
+        return departureDay;
+    }
+
+    public DayOfWeek getArrivalDay() {
+        return arrivalDay;
+    }
+
     @Override
     public String toString() {
-        return "Flight from: " + departureAirport + ", to:" + arrivalAirport + ". Departure day: " + departureDay + ", Arrival day: " + arrivalDay;
+        return "Flight from: " + departureAirport + ", to: " + arrivalAirport + ". Departure day: " + departureDay + ", Arrival day: " + arrivalDay;
     }
 
     @Override

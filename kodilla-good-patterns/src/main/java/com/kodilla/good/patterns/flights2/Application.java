@@ -7,9 +7,9 @@ public class Application {
         DomesticFlightsList domesticFlightsList = new DomesticFlightsList();
         FlightsSearchEngine flightsSearchEngine = new FlightsSearchEngine(domesticFlightsList);
 
-        flightsSearchEngine.findFlightFromCity("Gdansk");
-        flightsSearchEngine.findFlightToCity("Wroclaw");
-        //flightsSearchEngine.findFlightThroughAnotherCity("Warszawa");
+        //flightsSearchEngine.findFlightFromCity("Gdansk");
+        //flightsSearchEngine.findFlightToCity("Wroclaw");
+        flightsSearchEngine.findFlightThroughAnotherCity("Szczecin");
     }
 
 }
