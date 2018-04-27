@@ -11,7 +11,6 @@ public class FlightsSearchEngine {
     private DomesticFlightsList domesticFlightsList;
     private List<Flight> searchingDepartureAirport;
     private List<Flight> searchingArrivalAirport;
-    //Map<Flight, List<Flight>> searchingStopoverCity;
 
     public FlightsSearchEngine(DomesticFlightsList domesticFlightsList) {
         this.domesticFlightsList = domesticFlightsList;
@@ -52,7 +51,6 @@ public class FlightsSearchEngine {
             }
             searchingStopoverCity.put (af.getDepartureAirport(), possibleFlight);
         }
-        //System.out.println(searchingStopoverCity + "\n");
         return searchingStopoverCity;
     }
 }

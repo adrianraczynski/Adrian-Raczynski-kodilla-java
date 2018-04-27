@@ -1,11 +1,15 @@
 package com.kodilla.pattern2.facade;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
+@Service
 public class ShopService {
     private final List<Order> orders = new ArrayList<>();
 
@@ -49,5 +53,70 @@ public class ShopService {
             }
         }
         return false;
+    }
+
+    public BigDecimal calculateValue(Long orderId) {
+        Iterator<Order> orderIterator = orders.stream()
+                .filter(o -> o.getOrderId().equals(orderId))
+                .iterator();
+        while (orderIterator.hasNext()) {
+            Order theOrder = orderIterator.next();
+            return theOrder.calculateValue();
+        }
+        return BigDecimal.ZERO;
+    }
+
+    public boolean doPayment(Long orderId) {
+        Iterator<Order> orderIterator = orders.stream()
+                .filter(o -> o.getOrderId().equals(orderId))
+                .iterator();
+        while (orderIterator.hasNext()) {
+            Order theOrder = orderIterator.next();
+            if (theOrder.isPaid()) {
+                return true;
+            } else {
+                Random random = new Random();
+                theOrder.setPaid(random.nextBoolean());
+                return theOrder.isPaid();
+            }
+        }
+        return false;
+    }
+
+    public boolean verifyOrder(Long orderId) {
+        Iterator<Order> orderIterator = orders.stream()
+                .iterator();
+        while (orderIterator.hasNext()) {
+            Order theOrder = orderIterator.next();
+            boolean result = theOrder.isPaid();
+            Random random = new Random();
+            if (theOrder.isVerified()) {
+                theOrder.setVerified(result && random.nextBoolean());
+            }
+            return theOrder.isVerified();
+        }
+        return false;
+    }
+
+    public boolean submitOrder(Long orderId) {
+        Iterator<Order> orderIterator = orders.stream()
+                .iterator();
+        while (orderIterator.hasNext()) {
+            Order theOrder = orderIterator.next();
+            if (theOrder.isVerified()) {
+                theOrder.setSubmitted(true);
+            }
+            return theOrder.isSubmitted();
+        }
+        return false;
+    }
+
+    public void cancelOrder(Long orderId) {
+        Iterator<Order> orderIterator = orders.stream()
+                .iterator();
+        while (orderIterator.hasNext()) {
+            Order theOrder = orderIterator.next();
+            orders.remove(theOrder);
+        }
     }
 }

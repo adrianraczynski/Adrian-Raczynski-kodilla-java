@@ -104,6 +104,8 @@ public class CompanyDaoTestSuite {
         companyDao.save(greyMatter);
         int id6 = greyMatter.getId();
 
+
+        /** Treść dla modułu 13.4, zmodyfikowana pod moduł 20.1
         //When
         List <Employee> employeeSearchByLastname = employeeDao.retrieveEmployeeSearchByLastname("Smith");
         List <Company>  companySearchBy3Letter = companyDao.retrieveCompanySearchBy3Letter("Sof%");
@@ -111,6 +113,16 @@ public class CompanyDaoTestSuite {
         //Then
         Assert.assertEquals(1, employeeSearchByLastname.size());
         Assert.assertEquals(1, companySearchBy3Letter.size());
+        **/
+
+        //When dla modułu 20.1
+        List<Company> listOfCompanies =
+                companyDao.findNameOfCompanyByFirstThreeLetters("dat");
+        int foundCompanies = listOfCompanies.size();
+
+        //Then dla modułu 20.1
+        Assert.assertEquals(1,foundCompanies);
+
 
 
         //CleanUp
