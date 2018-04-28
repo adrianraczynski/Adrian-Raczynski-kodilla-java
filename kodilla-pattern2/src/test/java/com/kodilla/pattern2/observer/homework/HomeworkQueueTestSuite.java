@@ -8,22 +8,18 @@ public class HomeworkQueueTestSuite {
     @Test
     public void homeworkUpdate() {
         //given
-        Modul1 modul1 = new Modul1();
-        Modul2 modul2 = new Modul2();
-
-        StudentAdrian studentAdrian = new StudentAdrian("Adrian");
-        StudentAdrian studentAdrianAgata = new StudentAdrian("Agata");
-        StudentAdrian studentAdrianPawel = new StudentAdrian("Pawel");
-        StudentAdrian studentAdrianMaciej = new StudentAdrian("Maciej");
+        HomeworkQueue studentAdrian = new Student("Adrian");
+        HomeworkQueue studentAgata = new Student("Agata");
+        HomeworkQueue studentPawel = new Student("Pawel");
+        HomeworkQueue studentMaciej = new Student("Maciej");
 
         Mentor andrzejTrznadel = new Mentor("Andrzej Trznadel");
         Mentor adamNowak = new Mentor ("Adam Nowak");
 
         studentAdrian.registerObserver(andrzejTrznadel);
-        studentAdrianAgata.registerObserver(andrzejTrznadel);
-        studentAdrianPawel.registerObserver(adamNowak);
-        studentAdrianMaciej.registerObserver(andrzejTrznadel);
-
+        studentAgata.registerObserver(andrzejTrznadel);
+        studentPawel.registerObserver(adamNowak);
+        studentMaciej.registerObserver(andrzejTrznadel);
 
         //when
         studentAdrian.addExercise("zad 1.1");
@@ -41,8 +37,8 @@ public class HomeworkQueueTestSuite {
         studentMaciej.addExercise("pierwsze zadanie");
 
         //then
-        Assert.assertEquals(3, andrzejTrznadel.getUpdateCount());
-        Assert.assertEquals(2,adamNowak.getUpdateCount());
+        Assert.assertEquals(6, andrzejTrznadel.getUpdateCount());
+        Assert.assertEquals(4, adamNowak.getUpdateCount());
 
 
     }
