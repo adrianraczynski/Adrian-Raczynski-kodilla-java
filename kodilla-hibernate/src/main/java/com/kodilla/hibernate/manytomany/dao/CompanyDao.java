@@ -12,17 +12,10 @@ import java.util.List;
 @Repository
 public interface CompanyDao extends CrudRepository<Company, Integer> {
 
-    //@Query (nativeQuery = true)
-    //List<Company> retrieveCompanySearchBy3Letter (@Param("FIRSTLETTERS") String name);
+    //Moduł 13
+    @Query (nativeQuery = true)
+    List<Company> retrieveCompanySearchBy3Letter (@Param("FIRSTLETTERS") String name);
 
-
-    //Moduł 20.1
-    @Query(nativeQuery = true)
-    List<Company> findNameOfCompanyByFirstThreeLetters
-            (@Param("FIRSTTHREELETTERSOFNAMECOMPANY") String firstThreeLettersOfNameCompany);
-
-    //Moduł 20.1
-    @Query(nativeQuery = true)
-    List<Company> findNameOfCompanyByAnyPartOfName
-            (@Param("ANYPARTOFNAMECOMPANY") String anyPartOfNameCompany);
+    @Query (nativeQuery = true)
+    List<Company> retrieveCompanyByPartialName (@Param("PARTIALNAME") String name);
 }
