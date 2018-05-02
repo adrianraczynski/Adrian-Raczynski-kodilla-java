@@ -23,7 +23,7 @@ public class MedianAdapterTestSuite {
         bookSet.add(bookA3);
 
         //When
-        MedianAdapter adapter = new MedianAdapter(new MedianAdaptee());
+        MedianAdapter adapter = new MedianAdapter();
         int median = adapter.publicationYearMedian(bookSet);
 
         //Then
