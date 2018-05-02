@@ -9,9 +9,6 @@ import java.util.Map;
 
 public class MedianAdaptee implements BookStatistics {
 
-
-
-
     @Override
     public int averagePublicationYear(Map<BookSignature, BookB> books) {
         Statistics statistics = new Statistics();
