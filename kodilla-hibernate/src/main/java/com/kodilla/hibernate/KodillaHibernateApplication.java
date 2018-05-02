@@ -1,5 +1,7 @@
 package com.kodilla.hibernate;
 
+import com.kodilla.hibernate.manytomany.dao.CompanyDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

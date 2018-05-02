@@ -10,6 +10,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,54 +29,68 @@ public class FindFacadeTestSuite {
     CompanyDao companyDao;
 
     @Test
-    public void testFindByAnyPartOfNameCompany() {
+    public void testFindByAnyPartOfNameCompany() throws NotFoundException {
         //given
         Company orlen = new Company("orlen");
         Company lotos = new Company("lotos");
         Company lotosPaliwa = new Company("lotos paliwa");
 
         companyDao.save(orlen);
+        int id1 = orlen.getId();
+
         companyDao.save(lotos);
+        int id2 = lotos.getId();
+
         companyDao.save(lotosPaliwa);
+        int id3 = lotosPaliwa.getId();
 
         //when
         List<Company> searchingCompany1 =foundDataFinderFacade.findCompanyByPartialName("orl");
         List<Company> searchingCompany2 =foundDataFinderFacade.findCompanyByPartialName("tos");
 
         //then
-        Assert.assertEquals(1, searchingCompany1);
-        Assert.assertEquals(2, searchingCompany2);
+        Assert.assertEquals(1, searchingCompany1.size());
+        Assert.assertEquals(2, searchingCompany2.size());
 
         //CleanUp
         try {
-        companyDao.delete(orlen);
-        companyDao.delete(lotos);
+            companyDao.delete(id1);
+            companyDao.delete(id2);
+            companyDao.delete(id3);
         } catch (Exception e) {
             //do nothing
         }
     }
 
     @Test
-    public void testFindByAnyPartOfNameEmployee() {
+    public void testFindByAnyPartOfNameEmployee() throws NotFoundException {
         //given
         Employee adamNowak = new Employee("Adam", "Nowak");
         Employee adrianRaczynski= new Employee("Adrian", "Raczynski");
+        Employee magdaNowak = new Employee("Magda", "Nowak");
 
         employeeDao.save(adamNowak);
+        int id4 = adamNowak.getId();
+
         employeeDao.save(adrianRaczynski);
+        int id5 = adrianRaczynski.getId();
+
+        employeeDao.save(magdaNowak);
+        int id6 = magdaNowak.getId();
 
         //when
         List<Employee> searchingEmployee1 = foundDataFinderFacade.findEmployeeByPartialName("Racz");
         List<Employee> searchingEmployee2  = foundDataFinderFacade.findEmployeeByPartialName("Now");
 
         //then
-        Assert.assertEquals(1, searchingEmployee1);
-        Assert.assertEquals(1, searchingEmployee2);
+        Assert.assertEquals(1, searchingEmployee1.size());
+        Assert.assertEquals(2, searchingEmployee2.size());
 
         //CleanUp
         try {
-        employeeDao.delete(adamNowak);
-        employeeDao.delete(adrianRaczynski);
+            employeeDao.delete(id4);
+            employeeDao.delete(id5);
+            employeeDao.delete(id6);
         } catch (Exception e) {
             //do nothing
         }

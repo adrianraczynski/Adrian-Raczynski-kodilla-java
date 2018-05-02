@@ -15,9 +15,9 @@ import java.util.List;
 
 //Wersja dla modułu 20.1
 @NamedNativeQuery(
-        name = "Company.retrieveEmployeeByPartialName",
+        name = "Employee.retrieveEmployeeByPartialName",
         query = "SELECT * FROM EMPLOYEES WHERE LASTNAME LIKE :PARTIALNAME ",
-        resultClass = Company.class
+        resultClass = Employee.class
 )
 
 @Entity
