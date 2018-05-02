@@ -11,11 +11,7 @@ import java.util.Set;
 
 public class MedianAdapter extends MedianAdaptee implements Classifier {
 
-    private final MedianAdaptee medianAdaptee;
-
-    public MedianAdapter(MedianAdaptee medianAdaptee) {
-        this.medianAdaptee = medianAdaptee;
-    }
+    private MedianAdaptee medianAdaptee;
 
     @Override
     public int publicationYearMedian(Set<BookA> bookASet) {
