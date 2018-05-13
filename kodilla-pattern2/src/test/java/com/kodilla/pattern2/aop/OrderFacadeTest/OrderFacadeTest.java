@@ -29,5 +29,8 @@ public class OrderFacadeTest {
             //business exception - should be handled in real application
         }
 
+        //Problemem jest test. W teście dostajesz wyjątek, ale zamiast go wyrzucać to go łapiesz i ignorujesz co
+        //daje fałszywy obraz, że wszystko jest OK. Ogólna zasada jest taka, że nie  łapiemy w testach wyjątków.
+
     }
 }
