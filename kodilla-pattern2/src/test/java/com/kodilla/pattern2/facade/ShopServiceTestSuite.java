@@ -4,6 +4,7 @@ import com.kodilla.pattern2.facade.api.ItemDto;
 import com.kodilla.pattern2.facade.api.OrderDto;
 import com.kodilla.pattern2.facade.api.OrderFacade;
 import com.kodilla.pattern2.facade.api.OrderProcessingException;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,7 +68,7 @@ public class ShopServiceTestSuite {
     }
 
     @Test
-    public void testShopFacade() {
+    public void testShopFacadeWhenPaymentIsRejected() { //nie wolno łapać wyjątków w testach, tylko wyrzucać je na zewnątrz!!!
 
         OrderDto order = new OrderDto();
         order.addItem(new ItemDto(10L, 2));
@@ -77,8 +78,10 @@ public class ShopServiceTestSuite {
 
         try {
             orderFacade.processingOrder(order,1L);
+            Assert.fail();
+
         } catch (OrderProcessingException ex){
-                //business exception - should be handled in real application
+            Assert.assertEquals("Payment was rejected", ex.getMessage());
             }
     }
 }

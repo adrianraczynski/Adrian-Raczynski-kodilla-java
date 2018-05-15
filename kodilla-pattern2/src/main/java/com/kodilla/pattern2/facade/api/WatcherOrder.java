@@ -31,6 +31,7 @@ public class WatcherOrder {
 
         } catch (Throwable xyz) {
             LOGGER.error(xyz.getMessage());
+            LOGGER.error("ERROR test !!!!");
             throw xyz;
         }
         return result;
