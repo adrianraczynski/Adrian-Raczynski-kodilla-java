@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class FacebookTestingApp {
+
     public static final String XPATH_DAY = "//div[contains(@class, \"_5k_5\")]/span/span/select[1]";
     public static final String XPATH_MONTH = "//div[contains(@class, \"_5k_5\")]/span/span/select[2]";
     public static final String XPATH_YEAR = "//div[contains(@class, \"_5k_5\")]/span/span/select[3]";
@@ -26,6 +27,5 @@ public class FacebookTestingApp {
         selectBoardDay.selectByIndex(9);
         selectBoardMonth.selectByIndex(2);
         selectBoardYear.selectByValue("1992");
-
     }
 }
